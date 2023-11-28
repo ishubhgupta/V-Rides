@@ -1,0 +1,170 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+
+*{
+  font-family: 'Tilt Neon', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #1b1b33;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  background-color: #29294d;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    text-align: center; /* Add this line */
+}
+
+.navbar-container.h1 {
+    color: #fff; /* Adjust the color as needed */
+    margin: 0;
+    display: inline-block; /* Add this line */
+}
+
+.navbar .logo img{
+  width: 80px;
+}
+
+main{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 20px auto;
+    background-color: #fff;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+.flex-items {
+    flex: 1 0 40%; /* Adjust this value as per your preference */
+    padding: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    height: 35vh;
+    backdrop-filter: blur(16px) saturate(200%);
+    -webkit-backdrop-filter: blur(16px) saturate(200%);
+    background-color:rgb(216, 213, 213);
+    border-radius: 30px;
+    border: 1px solid rgba(255, 255, 255, 0.125);
+    margin: 20px;
+    box-shadow: 0px 0px 40px 2px rgb(244 240 240 / 17%);
+    transition: transform 0.5s ease-in-out;
+    justify-content: space-around;
+    overflow: hidden;
+}
+
+.height{
+    height: 25vh;
+}
+
+.flex-items img{
+    width: 20vh;
+    height: 20vh;
+}
+
+/* Add this style to make the height dynamic with a scrollbar */
+.flex-items {
+    overflow: auto; /* Enable vertical scrolling */
+    max-height: 35vh; /* Set the maximum height */
+}
+
+/* Customize the scrollbar */
+.flex-items::-webkit-scrollbar {
+    width: 8px;
+}
+
+.flex-items::-webkit-scrollbar-thumb {
+    background-color: #888;
+}
+
+.flex-items::-webkit-scrollbar-thumb:hover {
+    background-color: #555;
+}
+
+/* Rest of your existing CSS */
+
+.container {
+    display: flex;
+    flex-wrap: wrap;
+    width: 80vw;
+    margin: 0px auto;
+}
+
+/* Rest of your existing CSS */
+
+
+h1 {
+    color: #333;
+    text-align: center;
+    margin-top: 0px;
+}
+
+h3 {
+    color: #555;
+}
+
+p {
+    margin: 0;
+}
+
+.user-queries-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.user-queries-table th, .user-queries-table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+.user-queries-table th {
+    background-color: #f2f2f2;
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    display: inline-block;
+    margin-top: 10px;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background: linear-gradient(to top, rgba(255, 255, 255, 0.9) 10%, rgba(255, 255, 255, 0) 100%);
+    text-align: center;
+    padding: 10px 0;
+    height: 10vh;
+    box-shadow: 0px -5px 15px rgba(0, 0, 0, 0.1); /* Optional: Add a subtle shadow */
+}
+
+/* Adjust the link style as needed */
+footer a {
+    color: #007bff;
+    text-decoration: none;
+    font-size: 2vh;
+}

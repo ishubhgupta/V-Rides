@@ -1,0 +1,149 @@
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+
+*{
+  font-family: 'Tilt Neon', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #1b1b33;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+/* Navigation Bar */
+.navbar {
+  display: flex;
+  background-color: #29294d;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.navbar .logo img{
+  width: 80px;
+}
+
+.container {
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #fff;
+    width: 80%;
+}
+
+h2 {
+    color: #333;
+    text-align: center;
+}
+
+.maintenance-list, .healthy-list {
+    margin-top: 20px;
+    padding: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    border-radius: 4px;
+}
+
+.maintenance-list h3, .healthy-list h3 {
+    color: #555;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 10px;
+    border: 1px solid #ddd;
+    text-align: left;
+}
+
+th {
+    background-color: #f2f2f2;
+}
+
+.send-to-maintenance {
+    background-color: #4caf50;
+    color: #fff;
+    border: none;
+    padding: 8px 16px;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 4px;
+    font-size: 14px;
+}
+
+.send-to-maintenance:hover {
+    background-color: #45a049;
+}
+
+.delete-button {
+  padding: 5px 10px;
+  background-color: #d9534f;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.back-link {
+  display: inline-block;
+  margin-top: 20px;
+  text-decoration: none;
+  padding: 10px;
+  background-color: #333;
+  color: white;
+  border-radius: 4px;
+  align-content: center;
+}
+.back-link h3:hover {
+    color: #45a049;
+}
+
+.button-container {
+  margin-bottom: 20px;
+}
+
+.button {
+  padding: 10px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+  margin-right: 10px;
+}
+
+.button:hover {
+  background-color: #45a049;
+}
+
+.maintenance-button {
+  padding: 10px;
+  background-color: #337ab7;
+  color: white;
+  border: none;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+.maintenance-button:hover {
+  background-color: #2e6da4;
+}

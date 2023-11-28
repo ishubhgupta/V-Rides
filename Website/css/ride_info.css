@@ -1,0 +1,110 @@
+/* ride_info.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tilt Neon', sans-serif;
+    background: #1b1b33;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    background-color: #29294d;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar .logo img {
+    width: 80px;
+}
+
+/* Container Styling */
+.container {
+    margin: 10px auto;
+    padding: 15px;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+    background-color: rgba(255, 255, 255, 0.9);
+    width: 90%;
+    overflow: auto; /* Add a scroll bar */
+    text-align: center; /* Center-align content */
+}
+
+.container h1 {
+    margin-bottom: 15px;
+    color: #333;
+}
+
+/* Table Styling */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 15px auto;
+    border: 2px solid #ddd; /* Improved border color */
+}
+
+th, td {
+    border: 2px solid #ddd; /* Improved border color */
+    padding: 10px;
+    text-align: center; /* Center-align content */
+}
+
+th {
+    background-color: #f0f0f0;
+}
+
+/* Link Styling */
+a {
+    color: #007bff; /* Improved link color */
+    text-decoration: none;
+    cursor: pointer;
+}
+
+/* Back to Dashboard Styling */
+.back-to-dashboard {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-dashboard:hover {
+    background-color: #0056b3;
+}
+
+/* Responsive Design */
+@media only screen and (max-width: 768px) {
+    .navbar-container {
+        width: 90%;
+    }
+
+    .container {
+        width: 95%;
+    }
+}
