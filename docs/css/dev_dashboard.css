@@ -1,0 +1,90 @@
+/* user_dashboard.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+
+*{
+  font-family: 'Tilt Neon', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  background: #1b1b33;
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+.navbar {
+  display: flex;
+  background-color: #29294d;
+  justify-content: space-between;
+  align-items: center;
+  padding-right: 20px;
+}
+
+.navbar-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto;
+}
+
+.navbar .logo img{
+  width: 80px;
+}
+
+main{
+    height: 70vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.container {
+    width: 80vw;
+    margin: 50px auto;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    color: #333;
+}
+
+.dashboard {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.dashboard-box {
+    flex: 1;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    border-radius: 20px;
+    padding: 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.4s ease-in;
+}
+
+.dashboard-box:hover {
+    background-color: #f0f0f0;
+    transform: scale(1.1);
+}
+
+h3 {
+    color: #333;
+}
+
+p {
+    color: #666;
+    font-size: 20px;
+    margin-top: 10px;
+    font-weight: bold;
+}

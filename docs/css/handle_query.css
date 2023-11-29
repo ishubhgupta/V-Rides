@@ -1,0 +1,138 @@
+/* handle_query.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Tilt+Neon&display=swap');
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: 'Tilt Neon', sans-serif;
+    background: #1b1b33;
+    background-size: cover;
+    background-repeat: no-repeat;
+    margin: 0;
+    color: #fff;
+}
+
+/* Navigation Bar */
+.navbar {
+    display: flex;
+    background-color: #29294d;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.navbar .logo img {
+    width: 80px;
+}
+
+/* Main Content */
+.container {
+    margin: 20px;
+}
+
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.flex-item {
+    flex: 1;
+    padding: 20px;
+    box-sizing: border-box;
+    margin: 10px;
+    border-radius: 10px;
+    /* background-color: rgba(255, 255, 255, 0.9); */
+}
+
+.scroll-right {
+    overflow-y: auto;
+    max-height: 80vh; /* Adjust as needed */
+}
+
+/* Query Box */
+.query-box {
+    margin-bottom: 20px;
+}
+
+h2, h3 {
+    color: #fff;
+}
+
+/* Query Box Styling */
+.query-box {
+    background-color: #29294d;
+    border: 2px solid #fff;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+input[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    padding: 8px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Solved Message Styling */
+.solved-message {
+    color: #28a745;
+    font-weight: bold;
+}
+
+/* Back to Dashboard Styling */
+.back-link {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    color: #007bff;
+    text-decoration: none;
+    cursor: pointer;
+}
+/* Back to Dashboard Styling */
+.back-to-dashboard {
+    position: fixed;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.back-to-dashboard:hover {
+    background-color: #0056b3;
+}
