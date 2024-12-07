@@ -7,6 +7,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>V-Rides</title>
     <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
 <body background="assets/bg_index.png">
@@ -20,6 +23,7 @@
         <div class="rightNav">
             <ul class="nav-list">
                 <li><a href="#program">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
                 <li><a href="#program2">About</a></li>
                 <li><a href="#program3">Contact</a></li>
             </ul>
@@ -53,6 +57,37 @@ ello
                         </div>
                     </div>
                     <a href="login.php" class="rent-button">Rent a bicycle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the pricing section -->
+    <section class="pricing-section" id="pricing" data-aos="fade-up">
+        <h1 class="section-title">Pricing</h1>
+        <div class="pricing-layout">
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h2>First 15 Minutes</h2>
+                    <div class="price">₹10</div>
+                    <p>Base fare for initial duration</p>
+                </div>
+                <div class="pricing-card">
+                    <h2>Additional Time</h2>
+                    <div class="price">₹1<span>/min</span></div>
+                    <p>After first 15 minutes</p>
+                </div>
+            </div>
+            
+            <div class="calculator-container" data-aos="fade-up">
+                <h2>Calculate Your Fare</h2>
+                <div class="calculator">
+                    <div class="input-group">
+                        <input type="number" id="minutes" min="15" value="15" placeholder="Enter duration">
+                        <span class="input-suffix">minutes</span>
+                    </div>
+                    <button onclick="calculateFare()">Calculate</button>
+                    <div id="fare-result">Total Fare: ₹10</div>
                 </div>
             </div>
         </div>
@@ -95,16 +130,12 @@ ello
 
     <footer>
         <div class="contact-links">
-            <h2>Contact Us</h2>
-            <a href="https://www.instagram.com/your_instagram_link" target="_blank" rel="noopener">
-                <img src="instagram_icon.png" alt="Instagram">
-            </a>
-            <a href="https://www.youtube.com/your_youtube_link" target="_blank" rel="noopener">
-                <img src="youtube_icon.png" alt="YouTube">
-            </a>
-            <a href="https://www.facebook.com/your_facebook_link" target="_blank" rel="noopener">
-                <img src="facebook_icon.png" alt="Facebook">
-            </a>
+            <h2>Connect With Us</h2>
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
         </div>
         <div class="feedback-form" id="program3">
             <h2>Feedback</h2>
@@ -118,6 +149,25 @@ ello
             <!-- <p>Thanks for submitting!</p> -->
         </div>
     </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        function calculateFare() {
+            const minutes = parseInt(document.getElementById('minutes').value);
+            let fare = 10; // Base fare for first 15 minutes
+            
+            if (minutes > 15) {
+                fare += (minutes - 15); // ₹1 per minute after first 15 minutes
+            }
+            
+            document.getElementById('fare-result').innerHTML = `Total Fare: ₹${fare}`;
+        }
+    </script>
 </body>
 
 </html>
