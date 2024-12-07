@@ -1,23 +1,25 @@
 body {
-  font-family: Arial, sans-serif;
-  margin: 0;
-  padding: 0;
-  background-image: url("../assets/bg.jpg"); /* Background image */
-  background-size: cover; /* Cover the entire background */
-  background-repeat: no-repeat; /* Do not repeat the background image */
+    font-family: 'Poppins', sans-serif;
+    margin: 0;
+    padding: 0;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../assets/bg.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    min-height: 100vh;
 }
 
-.main{
-display: flex;
-
+.main {
+    display: flex;
+    min-height: 100vh;
 }
-.overlay{
-backdrop-filter: blur(6px) saturate(200%);
--webkit-backdrop-filter: blur(6px) saturate(200%);
-background-color: rgba(17, 25, 40, 0.59); /* rgba(17, 25, 40, 0.75); */
-height: 100vh;
-width: 50vw;
-position: relative;
+
+.overlay {
+    backdrop-filter: blur(8px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.7);
+    height: 100vh;
+    width: 50vw;
+    position: relative;
 }
 
 .navbar {
@@ -62,7 +64,6 @@ body {
   padding: 0;
 }
 
-
 .logo {
   color: white;
 }
@@ -78,79 +79,156 @@ body {
 }
 
 .login-container {
-  margin: 10px auto; /* Center the login container */
-  padding: 20px 40px;
-  border: 1px solid #ccc;
-  border-radius: 10px;
-  width: fit-content;
-  height: fit-content;
-  color: white;
-  margin-top: 100px;
-  text-align: center; /* Center-align text within the container */
-  backdrop-filter: blur(16px) saturate(180%);
-  /* -webkit-backdrop-filter: blur(16px) saturate(180%);
-  background-color: rgba(17, 25, 40, 0.75); */
-  -webkit-backdrop-filter: blur(6px) saturate(200%);
-  background-color: rgba(17, 25, 40, 0.59); /* rgba(17, 25, 40, 0.75); */
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.125);
+    margin: auto;
+    padding: 2.5rem 3rem;
+    border-radius: 20px;
+    width: 400px;
+    color: white;
+    backdrop-filter: blur(16px) saturate(180%);
+    background-color: rgba(17, 25, 40, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+    transform: translateY(20px);
+    opacity: 0;
+    animation: slideUp 0.5s ease forwards;
 }
 
-.login-container h2 {
-  margin-bottom: 15px;
-  
+.login-header {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.login-header h2 {
+    margin: 0;
+    font-size: 2rem;
+    font-weight: 600;
+    color: #fff;
+}
+
+.login-subtitle {
+    color: #a0a0a0;
+    margin-top: 0.5rem;
+    font-size: 0.9rem;
 }
 
 .form-group {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 15px;
+    margin-bottom: 1.5rem;
 }
 
 .form-group label {
-  display: block;
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+    color: #e0e0e0;
 }
 
 .form-group input {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  box-sizing: border-box;
+    width: 100%;
+    padding: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    background-color: rgba(255, 255, 255, 0.07);
+    border-radius: 8px;
+    color: white;
+    font-size: 0.9rem;
+    transition: all 0.3s ease;
 }
 
-.input_head {
-  margin-bottom: 10px;
+.form-group input:focus {
+    outline: none;
+    border-color: rgb(112, 170, 243);
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
-.lg_button{
-  background-color: rgb(112 170 243); /* Orange button color */
-  color: white; /* White text color */
-  padding: 10px 20px;
-  border: none;
-  border-radius: 5px;
-  margin-left: 10px;
-  text-decoration: none;
+.lg_button {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(135deg, rgb(112, 170, 243), rgb(89, 136, 195));
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+.lg_button:hover {
+    transform: translateY(-2px);
+    background: linear-gradient(135deg, rgb(89, 136, 195), rgb(112, 170, 243));
 }
 
 .param {
-display: flex;
-justify-content: center; /* Horizontally center */
-align-items: center; /* Vertically center */
-text-align: center; /* This affects the text inside the element */
-font-size: 3em;
-width: 100%; /* Define a width */
-height: 100vh; /* Define a height (100vh means 100% of the viewport height) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    padding: 0 2rem;
 }
 
-/* Styles for smaller screens (820px and below) */
+.param h1 {
+    font-size: 2.5rem;
+    line-height: 1.4;
+    color: white;
+}
+
+.highlight {
+    color: rgb(112, 170, 243);
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.subtitle {
+    font-size: 1.2rem;
+    color: #a0a0a0;
+    font-weight: 300;
+}
+
+.error-message {
+    color: #ff6b6b;
+    text-align: center;
+    margin: 1rem 0;
+    font-size: 0.9rem;
+}
+
+.signup-link {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #a0a0a0;
+    font-size: 0.9rem;
+}
+
+.signup-link a {
+    color: rgb(112, 170, 243);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
 @media screen and (max-width: 820px) {
-.overlay {
-  height: auto;
-  width: 100%;
-  position: static;
-}
+    .main {
+        flex-direction: column;
+    }
 
-.main{
-  flex-direction: column;
+    .overlay {
+        height: 40vh;
+        width: 100%;
+    }
+
+    .param {
+        height: 40vh;
+    }
+
+    .login-container {
+        width: 85%;
+        max-width: 400px;
+        margin: 2rem auto;
+    }
 }
-}  
