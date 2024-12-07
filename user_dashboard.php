@@ -27,6 +27,9 @@ $user_info_result = $conn->query($user_info_sql);
 
 if ($user_info_result->num_rows == 1) {
     $user_info = $user_info_result->fetch_assoc();
+    // Add these lines to define the missing variables
+    $warningCount = isset($user_info["warnings"]) ? $user_info["warnings"] : 0;
+    $isSuspended = isset($user_info["suspended"]) ? $user_info["suspended"] : 0;
 } else {
     // Handle the case where user information is not found
     echo "User information not found.";
@@ -96,113 +99,112 @@ if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST["submit_feedback"])) {
 </head>
 
 <body>
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="assets/logo_index.png" alt="Logo">
-            </div>
-        </div>
-    </nav>
-
-    <section class="flex">
-        <div class="left-nav">
-            <div class="review">
-                <img src="assets/circle.png" alt="photo of the reviewer">
-            </div>
-            <h1>Welcome back,</h1>
-            <p><?php echo htmlspecialchars($user_info["name"]); ?></p>
-            <?php
-            // Assuming $user_info is the user information array
-            $isSuspended = $user_info["suspended"];
-
-            // Check if the account is not suspended before showing the "Add Token" button
-            if (!$isSuspended) {
-                echo '<form method="post" action="wallet.php">';
-                echo '<button type="submit" class="active">Add Token</button>';
-                echo '</form>';
-            }
-            ?>
-
-            <button class="active">
-                <a href="previous_rides.php" class="button">View Previous Rides</a>
-            </button>            
-            <button class="active">
-                <a href="user_queries.php" class="button">View Previous Queries</a>
-            </button>
-            <form method="post" action="logout.php"> <!-- Add a form for logout -->
-                <button class="active" type="submit" name="logout">Logout</button>
-            </form>
-        </div>
-
-        <div class="main-content">
-            <div class="flex-item <?php echo ($isSuspended) ? 'account-suspended' : 'text-warnings'; ?>">
-                <h3>Registration number:</h3>
-                <p class="text_">Reg. no. : <?php echo htmlspecialchars($user_info["vit_registration_number"]); ?></p>
-
-                <?php
-                // Check if there are warnings
-                $warningCount = $user_info["warnings"]; // Assuming warnings field in the table
-                if ($warningCount > 0) {
-                    echo '<h3>Warning</h3>';
-                    echo '<p>Number of warnings given: ' . $warningCount . '</p>';
-                }
-
-                // Check if the account is suspended
-                if ($isSuspended) {
-                    echo '<h3>Your account is suspended</h3>';
-                }
-                ?>
-            </div>
-
-            <div class="flex-item">
-                <h3>Wallet Details</h3>
-                <div class="wallet">
-                    <img src="assets/wallet.png" alt="wallet_icon">
+    <div class="dashboard-container">
+        <nav class="sidebar">
+            <div class="sidebar-header">
+                <img src="assets/logo_index.png" alt="Logo" class="logo">
+                <div class="user-info">
+                    <div class="user-avatar">
+                        <img src="assets/circle.png" alt="User Avatar">
+                    </div>
+                    <h2>Welcome back,</h2>
+                    <p class="user-name"><?php echo htmlspecialchars($user_info["name"]); ?></p>
                 </div>
-                <p>Wallet Balance: <?php echo htmlspecialchars($wallet_info["wallet_balance"]); ?> tokens</p>
             </div>
-
-            <div class="flex-item feedback">
-                <h3>Feedback and Queries</h3>
-                <form method="post" action="<?php echo htmlspecialchars($_SERVER['PHP_SELF']); ?>" class="feedback-form">
-                    <label for="feedback">Your Feedback or Query:</label>
-                    <textarea name="feedback" id="feedback" rows="4" cols="50" required></textarea>
-                    <button type="submit" class="button" name="submit_feedback">Submit</button>
-                </form>
-              
-            </div>
-
-            <div class="flex-item">
-                <h3>Past Rides</h3>
-                <?php if (!empty($displayedRides)) { ?>
-                    <table border="1" class="past-rides-table">
-                        <tr>
-                            <th>Ride ID</th>
-                            <th>Cycle ID</th>
-                            <th>Ride Date</th>
-                            <th>Distance (in m)</th>
-                            <th>Duration</th>
-                            <th>Ride Cost</th>
-                        </tr>
-                        <?php foreach ($displayedRides as $row) { ?>
-                            <tr>
-                                <td><?php echo htmlspecialchars($row["ride_id"]); ?></td>
-                                <td><?php echo htmlspecialchars($row["cycle_id"]); ?></td>
-                                <td><?php echo htmlspecialchars($row["ride_date"]); ?></td>
-                                <td><?php echo htmlspecialchars($row["distance"]); ?></td>
-                                <td><?php echo htmlspecialchars($row["duration"]); ?></td>
-                                <td><?php echo htmlspecialchars($row["ride_cost"]); ?></td>
-                            </tr>
-                        <?php } ?>
-                    </table>
-                    
-                <?php } else { ?>
-                    <p>No past rides found.</p>
+            <div class="sidebar-menu">
+                <?php if (!$isSuspended) { ?>
+                    <form method="post" action="wallet.php">
+                        <button type="submit" class="menu-btn">
+                            <i class="fa fa-plus-circle"></i> Add Token
+                        </button>
+                    </form>
                 <?php } ?>
+                <a href="previous_rides.php" class="menu-btn">
+                    <i class="fa fa-history"></i> Previous Rides
+                </a>
+                <a href="user_queries.php" class="menu-btn">
+                    <i class="fa fa-question-circle"></i> Previous Queries
+                </a>
+                <form method="post" action="logout.php" class="logout-form">
+                    <button type="submit" name="logout" class="menu-btn logout">
+                        <i class="fa fa-sign-out"></i> Logout
+                    </button>
+                </form>
             </div>
-        </div>
-    </section>
+        </nav>
 
+        <main class="main-content">
+            <div class="content-grid">
+                <div class="dashboard-card status-card <?php echo ($isSuspended) ? 'suspended' : ($warningCount > 0 ? 'warning' : ''); ?>">
+                    <h3><i class="fa fa-id-card"></i> Account Status</h3>
+                    <p>Reg. no.: <?php echo htmlspecialchars($user_info["vit_registration_number"]); ?></p>
+                    <?php if ($warningCount > 0) { ?>
+                        <div class="warning-badge">
+                            <i class="fa fa-exclamation-triangle"></i>
+                            <span>Warnings: <?php echo $warningCount; ?></span>
+                        </div>
+                    <?php } ?>
+                    <?php if ($isSuspended) { ?>
+                        <div class="suspended-badge">
+                            <i class="fa fa-ban"></i>
+                            <span>Account Suspended</span>
+                        </div>
+                    <?php } ?>
+                </div>
+
+                <div class="dashboard-card wallet-card">
+                    <h3><i class="fa fa-wallet"></i> Wallet</h3>
+                    <div class="wallet-balance">
+                        <span class="balance-amount"><?php echo htmlspecialchars($wallet_info["wallet_balance"]); ?></span>
+                        <span class="balance-label">tokens</span>
+                    </div>
+                </div>
+
+                <div class="dashboard-card feedback-card">
+                    <h3><i class="fa fa-comments"></i> Quick Feedback</h3>
+                    <form method="post" class="feedback-form">
+                        <textarea name="feedback" placeholder="Share your thoughts or concerns..." required></textarea>
+                        <button type="submit" name="submit_feedback" class="submit-btn">
+                            <i class="fa fa-paper-plane"></i> Submit
+                        </button>
+                    </form>
+                </div>
+
+                <div class="dashboard-card rides-card">
+                    <h3><i class="fa fa-bicycle"></i> Recent Rides</h3>
+                    <?php if (!empty($displayedRides)) { ?>
+                        <div class="rides-table-wrapper">
+                            <table class="rides-table">
+                                <thead>
+                                    <tr>
+                                        <th>Ride ID</th>
+                                        <th>Date</th>
+                                        <th>Distance</th>
+                                        <th>Cost</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($displayedRides as $ride) { ?>
+                                        <tr>
+                                            <td>#<?php echo htmlspecialchars($ride["ride_id"]); ?></td>
+                                            <td><?php echo date('M d, Y', strtotime($ride["ride_date"])); ?></td>
+                                            <td><?php echo htmlspecialchars($ride["distance"]); ?>m</td>
+                                            <td><?php echo htmlspecialchars($ride["ride_cost"]); ?> tokens</td>
+                                        </tr>
+                                    <?php } ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    <?php } else { ?>
+                        <div class="no-rides">
+                            <i class="fa fa-info-circle"></i>
+                            <p>No rides yet</p>
+                        </div>
+                    <?php } ?>
+                </div>
+            </div>
+        </main>
+    </div>
 </body>
 
 </html>
