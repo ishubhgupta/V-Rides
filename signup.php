@@ -93,97 +93,70 @@ $conn->close();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/signup.css">
-    <title>Signup Page</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Sign Up - V-Rides</title>
 </head>
 <body>
     <div class="main">
-
         <div class="overlay">
             <div class="param">
-                <h1>
-                    ___
-                    <br>Discover, Connect, Ride.<br> ___
-                </h1>
+                <span class="highlight">Join V-Rides</span>
+                <h1>Create your account<br>and start riding</h1>
+                <p class="subtitle">Experience convenient and affordable campus transportation</p>
             </div>
         </div>
 
-
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="assets/logo_index.png" alt="Logo">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <img src="assets/logo_index.png" alt="Logo">
+                </div>
+                <div class="buttons">
+                    <a href="login.php" class="button">Login</a>
+                </div>
             </div>
-            <div class="buttons">
-                <a href="login.php" class="button">Login</a>
-            </div>
-        </div>
-    </nav>
-    
-<div class="login-container">
-    <h2>Sign Up</h2>
-    <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        </nav>
         
-        <div class="form-group">
-            
-            <!-- <label class="input_head" for="name">Name:</label> -->
-            <input type="text" name="name" placeholder="Enter your Name" required>
-            
-        </div>
-        
-        <div class="form-group">
+        <div class="signup-container">
 
-            <!-- <label class="input_head" for="password">Email:</label> -->
-            <input type="email" name="email" placeholder="Enter your Email" required>
-            
-            
-        </div>
-        
-        <div class="form-group">
-            
-            <!-- <label class="input_head" for="username">Vit Registration Number :</label> -->
-            <input type="text" name="vit_registration_number" placeholder="Enter your Registration Number" required>
-            
-        </div>
 
-        
-        <div class="form-group">
-            
-            <!-- <label class="input_head" for="batch">Batch:</label> -->
-            <input type="number" name="batch" placeholder="Enter your Batch" required>
-            
-        </div>
+            <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" class="signup-form">
+                <div class="form-group">
+                    <input type="text" name="name" placeholder="Full Name" required>
+                </div>
+                <div class="form-group">
+                    <input type="email" name="email" placeholder="Email Address" required>
+                </div>
+                <div class="form-group">
+                    <input type="text" name="vit_registration_number" placeholder="VIT Registration Number" required>
+                </div>
+                <div class="form-group">
+                    <input type="number" name="batch" placeholder="Batch Year" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="password" placeholder="Create Password" required>
+                </div>
+                <div class="form-group">
+                    <input type="password" name="confirm_password" placeholder="Confirm Password" required>
+                </div>
+                <div class="form-group full-width">
+                    <label for="birthday" class="date-label">Date of Birth</label>
+                    <input type="date" name="birthday" required>
+                </div>
 
-        
-        <div class="form-group">
-            
-            <!-- <label class="input_head" for="password">Password:</label> -->
-            <input type="password" name="password" placeholder="Enter your password" required>
-            
-        </div>
-        
-        <div class="form-group">
-            
-            <!-- <label class="input_head" for="password">Confirm Password:</label> -->
-            <input type="password" name="confirm_password" placeholder="Enter your password again" required>
-            
-        </div>
-        
-        <span style="color: red;"><?php echo $password_match_error; ?></span>
-        
-        <div class="form-group">
-            
-            <!-- <label for="birthday" class="input_head">Birthday:</label> -->
-            <input type="date" name="birthday" required>
+                <?php if ($password_match_error): ?>
+                    <div class="error-message"><?php echo $password_match_error; ?></div>
+                <?php endif; ?>
 
-        </div>
-        <div class="lg_button_cont">
+                <button type="submit" class="signup-button">Create Account</button>
 
-            <input type="submit" value="Sign Up" class="lg_button">
+                <?php if ($registration_result): ?>
+                    <div class="registration-message"><?php echo $registration_result; ?></div>
+                <?php endif; ?>
 
+                <p class="login-link">Already have an account? <a href="login.php">Log in</a></p>
+            </form>
         </div>
-    </form>
-    <p><?php echo $registration_result; ?></p>
-</div>
-</div>
+    </div>
 </body>
 </html>
