@@ -1,0 +1,173 @@
+<!-- welcome page of our website -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>V-Rides</title>
+    <link rel="stylesheet" href="css/index.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body background="assets/bg_index.png">
+    <nav class="navbar background">
+        <div class="logo">
+            <img src="assets/logo_index.png" alt="V-Rides Logo">
+        </div>
+        <ul class="nav-list">
+        </ul>
+
+        <div class="rightNav">
+            <ul class="nav-list">
+                <li><a href="#program">Features</a></li>
+                <li><a href="#pricing">Pricing</a></li>
+                <li><a href="#program2">About</a></li>
+                <li><a href="#program3">Contact</a></li>
+            </ul>
+            <a href="signup.php" class="signup-btn">Sign Up</a>
+            <a href="login.php" class="btn btn-primary">Log In</a>
+        </div>
+    </nav>
+
+    <section class="firstsection">
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-big" id="web">Welcome To <br> V-Rides </h1>
+                <p class="text-littlesmall">
+                    Collage Bicycle Rental System
+                </p>
+            </div>
+        </div>
+    </section>
+ello
+    <section class="secondsection" id="program">
+
+        <div class="box-main">
+            <div class="firstHalf">
+                <h1 class="text-midium" id="program">
+                    Our Features
+                </h1>
+                <div class="box-main">
+                    <div class="section-content">
+                        <div class="image-container">
+                            <img src="assets/index_feature.png" alt="Feature Image">
+                        </div>
+                    </div>
+                    <a href="login.php" class="rent-button">Rent a bicycle</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Update the pricing section -->
+    <section class="pricing-section" id="pricing" data-aos="fade-up">
+        <h1 class="section-title">Pricing</h1>
+        <div class="pricing-layout">
+            <div class="pricing-container">
+                <div class="pricing-card">
+                    <h2>First 15 Minutes</h2>
+                    <div class="price">₹10</div>
+                    <p>Base fare for initial duration</p>
+                </div>
+                <div class="pricing-card">
+                    <h2>Additional Time</h2>
+                    <div class="price">₹1<span>/min</span></div>
+                    <p>After first 15 minutes</p>
+                </div>
+            </div>
+            
+            <div class="calculator-container" data-aos="fade-up">
+                <h2>Calculate Your Fare</h2>
+                <div class="calculator">
+                    <div class="input-group">
+                        <input type="number" id="minutes" min="15" value="15" placeholder="Enter duration">
+                        <span class="input-suffix">minutes</span>
+                    </div>
+                    <button onclick="calculateFare()">Calculate</button>
+                    <div id="fare-result">Total Fare: ₹10</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="thirdsection" id="program2">
+        <div class="box-main">
+            <div class="section-content">
+                <div class="image-container">
+                    <img src="assets/V-Rides.png" alt="V-Rides Logo">
+                </div>
+                <div class="text-content">
+                    <h1 class="text-midium" id="web"> About V-Rides </h1>
+                    <p class="text-small">
+                        v-ride is a college cycle rental system designed to provide flexible rental duration,
+                        payment option, bicycle health monitoring, user profile, pre-booking, and multiple bicycle
+                        booking. Our system uses QR code-based locking and unlocking to ensure security and ease of
+                        use for our customers. Our mission is to provide convenient and affordable bicycles for
+                        college students and staff. Rent a bicycle from V-Rides and enjoy a smooth ride to your
+                        destination.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="paras">
+            <h1 class="sectionTag text-littlesmall">
+                Timings
+            </h1>
+            <p class="sectionSubTag text-verysmall">
+                Monday - Sunday
+            </p>
+            <p class="sectionSubTag text-verysmall">
+                7AM TO 8PM
+            </p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="contact-links">
+            <h2>Connect With Us</h2>
+            <div class="social-icons">
+                <a href="#" class="social-icon" title="Instagram"><i class="fab fa-instagram"></i></a>
+                <a href="#" class="social-icon" title="YouTube"><i class="fab fa-youtube"></i></a>
+                <a href="#" class="social-icon" title="Facebook"><i class="fab fa-facebook"></i></a>
+            </div>
+        </div>
+        <div class="feedback-form" id="program3">
+            <h2>Feedback</h2>
+            <form action="submit_feedback.php" method="post">
+                <input type="text" id="first-name" name="first_name" placeholder="First Name" required>
+                <input type="email" id="email" name="email" placeholder="Email" required>
+                <input type="text" id="type-your-problem" name="type_your_problem" placeholder="Type Your Problem"
+                    required>
+                <button type="submit">Submit</button>
+            </form>
+            <!-- <p>Thanks for submitting!</p> -->
+        </div>
+    </footer>
+
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <script>
+        AOS.init({
+            duration: 1000,
+            once: true
+        });
+
+        function calculateFare() {
+            const minutes = parseInt(document.getElementById('minutes').value);
+            let fare = 10; // Base fare for first 15 minutes
+            
+            if (minutes > 15) {
+                fare += (minutes - 15); // ₹1 per minute after first 15 minutes
+            }
+            
+            document.getElementById('fare-result').innerHTML = `Total Fare: ₹${fare}`;
+        }
+    </script>
+</body>
+
+</html>

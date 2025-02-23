@@ -44,57 +44,58 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/signup.css">
-    <title>Login Page</title>
+    <link rel="stylesheet" href="css/login.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>Login - V-Rides</title>
 </head>
 <body>
     <div class="main">
-
         <div class="overlay">
             <div class="param">
                 <h1>
-                    ___
-                    <br>Discover, Connect, Ride.<br> ___
+                    <span class="highlight">Welcome Back!</span>
+                    <br>Your Next Ride Awaits<br>
+                    <span class="subtitle">Connect with fellow travelers</span>
                 </h1>
             </div>
         </div>
 
-
-    <nav class="navbar">
-        <div class="navbar-container">
-            <div class="logo">
-                <img src="assets/logo_index.png" alt="Logo">
+        <nav class="navbar">
+            <div class="navbar-container">
+                <div class="logo">
+                    <img src="assets/logo_index.png" alt="Logo">
+                </div>
+                <div class="buttons">
+                    <a href="signup.php" class="button">Signup</a>
+                </div>
             </div>
-            <div class="buttons">
-                <a href="signup.php" class="button">Signup</a>
+        </nav>
+        
+        <div class="login-container">
+            <div class="login-header">
+                <h2>Sign In</h2>
+                <p class="login-subtitle">Please enter your credentials to continue</p>
             </div>
-        </div>
-    </nav>
-    
-<div class="login-container">
-    <h2>Login</h2>
             <form action="<?php echo $_SERVER['PHP_SELF']; ?>" method="post">
                 <div class="form-group">
-                    <label class="input_head" for="vit_registration_number">VIT Registration Number:</label>
+                    <label class="input_head" for="vit_registration_number">Registration Number</label>
                     <input type="text" id="vit_registration_number" name="vit_registration_number" placeholder="Enter your VIT registration number" required>
                 </div>
                 <div class="form-group">
-                    <label class="input_head" for="password">Password:</label>
+                    <label class="input_head" for="password">Password</label>
                     <input type="password" id="password" name="password" placeholder="Enter your password" required>
                 </div>
 
-                <?php
-                if (isset($login_error)) {
-                    echo '<p style="color: red;">' . $login_error . '</p>';
-                }
-                ?>
+                <?php if (isset($login_error)): ?>
+                    <p class="error-message"><?php echo $login_error; ?></p>
+                <?php endif; ?>
 
                 <div class="lg_button_cont">
-                    <button class="lg_button">Login</button>
+                    <button class="lg_button">Sign In</button>
                 </div>
+                <p class="signup-link">Don't have an account? <a href="signup.php">Sign Up</a></p>
             </form>
-
-</div>
-</div>
+        </div>
+    </div>
 </body>
 </html>

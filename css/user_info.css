@@ -1,11 +1,26 @@
 /* cycle_info.css */
 
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+:root {
+    --primary-bg: #211e33;
+    --secondary-bg: #2a2744;
+    --accent-color: #e67e22;
+    --text-primary: #ffffff;
+    --text-secondary: #b3b3b3;
+    --card-bg: rgba(255, 255, 255, 0.05);
+    --danger: #e74c3c;
+    --warning: #f39c12;
+    --success: #2ecc71;
+}
+
 body {
     font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
     background-color: #1b1b33;
 }
+
 .container {
     margin: 20px auto;
     padding: 20px;
@@ -58,11 +73,159 @@ h2 {
     box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
+/* Updated Table Styles */
+.cycle-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text-primary);
+    margin: 1rem 0;
+    background: var(--secondary-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cycle-table th {
+    background-color: var(--accent-color);
+    color: white;
+    padding: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+
+.cycle-table td {
+    padding: 1rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    vertical-align: middle;
+}
+
+/* Row hover effect */
+.cycle-table tr:not(.suspended):not(.warned):hover {
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Status-based row styling */
+tr.suspended, tr.warned {
+    background-color: transparent;
+}
+
+tr.suspended:hover {
+    background-color: rgba(231, 76, 60, 0.3);
+}
+
+tr.warned:hover {
+    background-color: rgba(243, 156, 18, 0.3);
+}
+
+/* Status indicators */
+.status-indicator {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    margin-right: 12px;
+    border: 2px solid transparent;
+}
+
+.status-active {
+    background-color: var(--success);
+    box-shadow: 0 0 8px rgba(46, 204, 113, 0.5);
+}
+
+.status-suspended {
+    background-color: var(--danger);
+    box-shadow: 0 0 8px rgba(231, 76, 60, 0.5);
+}
+
+.status-warned {
+    background-color: var(--warning);
+    box-shadow: 0 0 8px rgba(243, 156, 18, 0.5);
+}
+
+/* Updated button styles in table */
+.button-container {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.delete-button,
+.suspend-button,
+.unsuspend-button,
+.warning-button,
+.add-money-button {
+    font-size: 0.8rem;
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    opacity: 0.9;
+}
+
+.delete-button {
+    background-color: var(--danger);
+    color: white;
+}
+
+.suspend-button {
+    background-color: var(--warning);
+    color: black;
+}
+
+.unsuspend-button {
+    background-color: var(--success);
+    color: white;
+}
+
+.warning-button {
+    background-color: #ff9900;
+    color: black;
+}
+
+.add-money-button {
+    background-color: var(--accent-color);
+    color: white;
+}
+
+/* Button hover effects */
+.delete-button:hover,
+.suspend-button:hover,
+.unsuspend-button:hover,
+.warning-button:hover,
+.add-money-button:hover {
+    opacity: 1;
+    transform: translateY(-1px);
+}
+
+/* Table responsive styles */
+@media (max-width: 768px) {
+    .cycle-table {
+        font-size: 0.9rem;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 0.3rem;
+    }
+
+    .delete-button,
+    .suspend-button,
+    .unsuspend-button,
+    .warning-button,
+    .add-money-button {
+        width: 100%;
+        padding: 0.4rem;
+    }
+}
 
 .cycle-table {
     width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
+    border-collapse: separate;
+    border-spacing: 0;
+    color: var(--text-primary);
 }
 
 .cycle-table th,
@@ -73,7 +236,14 @@ h2 {
 }
 
 .cycle-table th {
-    background-color: #f0f0f0;
+    background-color: var(--secondary-bg);
+    padding: 1rem;
+    font-weight: 500;
+}
+
+.cycle-table td {
+    padding: 0.8rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .back-link {
@@ -88,31 +258,6 @@ h2 {
     text-decoration: underline;
 }
 
-
-
-
-.cycle-table {
-    width: 100%;
-    border-collapse: collapse;
-    margin-top: 20px;
-}
-
-.cycle-table th, .cycle-table td {
-    padding: 8px;
-    text-align: left;
-}
-
-.delete-button {
-    background-color: #ff5c5c;
-    color: white;
-    padding: 5px 10px;
-    border: none;
-    border-radius: 3px;
-    cursor: pointer;
-}
-
-
-
 #overlay {
     display: none;
     position: fixed;
@@ -123,26 +268,106 @@ h2 {
     background: rgba(0, 0, 0, 0.7);
     justify-content: center;
     align-items: center;
+    z-index: 1000;
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
 }
 
 #overlay form {
-    background: white;
-    padding: 20px;
-    border-radius: 5px;
+    background: linear-gradient(145deg, var(--secondary-bg), var(--primary-bg));
+    padding: 2.5rem;
+    border-radius: 15px;
     text-align: center;
-}
-tr.suspended {
-    background-color: #FFD6D6; /* Light red */
-}
-
-tr.warned {
-    background-color: #FFFFCC; /* Light yellow */
+    min-width: 350px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.2);
+    transform: translateY(20px);
+    animation: slideUp 0.3s ease forwards;
 }
 
+@keyframes slideUp {
+    to {
+        transform: translateY(0);
+    }
+}
+
+#overlay label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: var(--text-primary);
+    font-size: 1.1rem;
+    font-weight: 500;
+}
+
+#overlay input[type="number"] {
+    width: 100%;
+    padding: 1rem;
+    margin: 1rem 0;
+    background: rgba(255, 255, 255, 0.05);
+    border: 2px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    color: var(--text-primary);
+    font-size: 1.2rem;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+#overlay input[type="number"]:focus {
+    outline: none;
+    border-color: var(--accent-color);
+    box-shadow: 0 0 0 2px rgba(230, 126, 34, 0.2);
+}
+
+#overlay input[type="number"]::placeholder {
+    color: var(--text-secondary);
+}
+
+.overlay-buttons {
+    display: flex;
+    gap: 1rem;
+    margin-top: 1.5rem;
+    justify-content: center;
+}
+
+#overlay input[type="submit"],
+#overlay button {
+    flex: 1;
+    padding: 0.8rem 1.5rem;
+    border-radius: 8px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    max-width: 150px;
+}
+
+#overlay input[type="submit"] {
+    background: var(--accent-color);
+    color: white;
+    box-shadow: 0 4px 15px rgba(230, 126, 34, 0.3);
+}
+
+#overlay button {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#overlay input[type="submit"]:hover,
+#overlay button:hover {
+    transform: translateY(-2px);
+}
+
+#overlay input[type="submit"]:active,
+#overlay button:active {
+    transform: translateY(0);
+}
 
 /* Add these styles to your existing CSS or create a new CSS file */
 .button-container {
     display: flex;
+    gap: 0.5rem;
 }
 
 .delete-button,
@@ -184,4 +409,157 @@ tr.warned {
 .add-money-button {
     background-color: #4CAF50; /* Green */
     color: white;
+}
+
+/* New styles */
+.dashboard-container {
+    padding: 2rem;
+    background-color: var(--primary-bg);
+    min-height: 100vh;
+    color: var(--text-primary);
+}
+
+.analytics-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.analytics-card {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.stat-value {
+    font-size: 2rem;
+    color: var(--accent-color);
+    margin-top: 0.5rem;
+}
+
+.charts-row {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    gap: 2rem;
+    margin-bottom: 2rem;
+}
+
+.chart-container {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.table-container {
+    background: var(--card-bg);
+    border-radius: 15px;
+    padding: 1.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    overflow-x: auto;
+}
+
+/* Add subtle row hover effect */
+.cycle-table tr:hover {
+    background-color: rgba(255, 255, 255, 0.02);
+}
+
+/* Add warning count style */
+.warning-count {
+    display: inline-block;
+    background-color: var(--warning);
+    color: black;
+    padding: 2px 8px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 500;
+}
+
+/* Search and Filter Controls */
+.controls-container {
+    margin-bottom: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.search-container {
+    flex: 1;
+    min-width: 300px;
+}
+
+.filter-container {
+    flex: 2;
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+#searchInput,
+#filterCriteria,
+#filterCondition,
+#filterValue {
+    background: var(--secondary-bg);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: var(--text-primary);
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    font-size: 0.9rem;
+}
+
+#searchInput {
+    width: 100%;
+}
+
+#searchInput::placeholder {
+    color: var(--text-secondary);
+}
+
+.filter-button,
+.reset-button {
+    padding: 0.5rem 1rem;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.filter-button {
+    background: var(--accent-color);
+    color: white;
+}
+
+.reset-button {
+    background: var(--secondary-bg);
+    color: var(--text-primary);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.filter-button:hover,
+.reset-button:hover {
+    transform: translateY(-1px);
+    opacity: 0.9;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .controls-container {
+        flex-direction: column;
+    }
+
+    .search-container,
+    .filter-container {
+        width: 100%;
+    }
+
+    #filterCriteria,
+    #filterCondition,
+    #filterValue {
+        flex: 1;
+    }
 }
